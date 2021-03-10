@@ -68,3 +68,28 @@ function menuScroll() {
 }
 
 menuScroll();
+
+function scrollAnimation() {
+  const sections = document.querySelectorAll('.js-scroll');
+
+  if (sections.length > 0) {
+    const windowHalf = window.innerHeight * 0.6;
+    sections[0].classList.add('.ativo');
+
+    function animateScroll() {
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top - windowHalf;
+
+        if (sectionTop < 0) {
+          section.classList.add('.ativo');
+        }
+        else
+          section.classList.remove('.ativo')
+      })
+    }
+
+    window.addEventListener('scroll', animateScroll);
+  }
+}
+
+scrollAnimation();
