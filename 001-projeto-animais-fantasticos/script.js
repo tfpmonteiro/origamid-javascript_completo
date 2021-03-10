@@ -41,3 +41,30 @@ function activeAcoordionNav() {
 }
 
 activeAcoordionNav();
+
+function menuScroll() {
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]')
+
+  function scrollToSection(event) {
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+
+    // scroll suave com scrollTo
+    // window.scrollTo({
+    //   top: section.offsetTop,
+    //   behavior: 'smooth'
+    // })
+
+    // scroll suave com scrollintoView
+    section.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
+
+  linksInternos.forEach((item) => {
+    item.addEventListener('click', scrollToSection)
+  })
+}
+
+menuScroll();
